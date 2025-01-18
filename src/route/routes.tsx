@@ -1,8 +1,5 @@
 import Home from "../components/layouts/home";
 
 export const ROUTES= [
-    {
-        path:'/',
-        component:<Home/>
-    }
+    {path:'/', component:<Home/>}
 ]
