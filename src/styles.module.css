@@ -1,0 +1,26 @@
+* {
+    @apply transition-colors duration-300
+}
+h2, p{
+    @apply dark:text-amber-100 text-gray-950 text-[13px] font-[600];
+    font-family: 'Dm sans', sans-serif;
+}
+.modeSelector{
+    @apply w-[45px] h-[45px] rounded-md hover:filter-none focus:filter-none hover:cursor-pointer;
+    filter: grayscale(100%);
+    background-size: 30px 30px;
+    transition: background-color 0.3s ease-in-out, filter 0.3s ease-in-out;
+}
+#modeSelector.clicked{
+    filter: none !important;
+    @apply bg-black
+}
+.navbar{
+    @apply flex justify-between items-center px-[10%] py-[10px] drop-shadow-md dark:bg-gray-600 bg-amber-100
+}
+.leftbar{
+    @apply flex flex-col px-[20px] gap-[10px]
+}
+.leftbar li{
+    @apply list-none dark:text-gray-950 text-amber-100 w-[100px] text-center
+}
