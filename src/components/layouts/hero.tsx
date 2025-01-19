@@ -1,6 +1,6 @@
 import React, {ReactNode} from 'react'
 import styles from '../../styles.module.css'
-export default function HomeBar() {
+export default function Hero() {
     function LeftBar(){
         return (
             <ul className={styles.leftbar}>
@@ -20,7 +20,7 @@ export default function HomeBar() {
     return (
         <div>
             {/*<LeftBar/>*/}
-            {/*<RightBar/>*/}
+            {/*<RightBar />*/}
         </div>
     )
 }
