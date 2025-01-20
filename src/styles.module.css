@@ -5,6 +5,11 @@ h2, p{
     @apply dark:text-amber-100 text-gray-950 text-[13px] font-[600];
     font-family: 'Dm sans', sans-serif;
 }
+
+
+.dark{
+    @apply bg-blue-950 text-white
+}
 .modeSelector{
     @apply w-[45px] h-[45px] rounded-md hover:filter-none focus:filter-none hover:cursor-pointer;
     filter: grayscale(100%);
@@ -15,12 +20,21 @@ h2, p{
     filter: none !important;
     @apply bg-black
 }
+.iconColor{
+    color: var(--icons-color);
+}
 .navbar{
-    @apply flex justify-between items-center px-[10%] py-[10px] drop-shadow-md dark:bg-gray-600 bg-amber-100
+    @apply flex justify-between items-center px-[10%]  drop-shadow-md dark:bg-gray-600 bg-amber-100
 }
 .leftbar{
-    @apply flex flex-col px-[20px] gap-[10px]
+    @apply flex flex-col px-[7px] md:px-[20px] gap-[7px] bg-white dark:bg-blue-500 w-[70px] md:w-[200px] py-[10px] shadow-md h-full
 }
-.leftbar li{
-    @apply list-none dark:text-gray-950 text-amber-100 w-[100px] text-center
+.leftbar div{
+    @apply flex w-[90%] p-[7px] md:p-[10px_7px] rounded-md cursor-pointer gap-[10px] hover:translate-x-[5px] transition ease-in-out duration-[500] items-center hover:bg-gray-200
+}
+.leftbar div>p{
+    @apply dark:text-white text-blue-950 text-nowrap text-center text-[15px] font-[680]
+}
+.home{
+    @apply flex flex-col  h-[100vh] overflow-hidden
 }

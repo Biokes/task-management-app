@@ -10,3 +10,9 @@
 body{
     @apply dark:bg-gray-600 bg-white
 }
+:root{
+    --light: #ffffff;
+    --dark: #171717;
+    --small-text-color: #fbf9f9;
+    --icons-color:#016BD5;
+}

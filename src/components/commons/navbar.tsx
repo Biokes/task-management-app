@@ -11,7 +11,7 @@ export default function Navbar(){
         if(localStorage){
             theme = localStorage.getItem('to_do_theme')?? lightTheme;
         }
-        if(theme=== lightTheme || theme=== darkTheme) {
+        if(theme=== lightTheme) {
             body.classList.add(lightTheme)
         }else{
             body.classList.add(darkTheme)
@@ -19,8 +19,6 @@ export default function Navbar(){
         const switchTheme = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>)=>{
             const target = e.target as HTMLButtonElement
             if(theme===darkTheme){
-                body.classList.replace(darkTheme,lightTheme);
-                target.classList.remove(clickedClass);
                 localStorage.setItem('to_do_theme',lightTheme);
                 theme = lightTheme;
             }else{
@@ -35,7 +33,7 @@ export default function Navbar(){
                     className={`${theme === 'dark' ? clickedClass : ''} ${styles.modeSelector}`}
                     onClick={(e)=>switchTheme(e)}
             >
-                <LightModeIcon className={'dark:text-amber-400 text-black'}/>
+                <LightModeIcon className={styles.iconColor}/>
             </button>
         )
     }
