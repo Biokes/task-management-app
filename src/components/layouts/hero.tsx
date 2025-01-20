@@ -9,9 +9,9 @@ export default function Hero() {
     const [currentComponent, setCurrentComponent] = useState<ReactNode>(<></>)
     function LeftBar(){
         const options = [
-            {text:'Dashboard', icon: <DashboardIcon/>, component:<Dashboard/>},
-            {text:'Vital Tasks', icon: <AssignmentTurnedInIcon/>,component:<p>vital tasks</p>},
-            {text:'settings', icon: <SettingsIcon/>,component:<p>settings</p>},
+            {text:'Dashboard', icon: <DashboardIcon style={{color:'var(--icons-color)'}}/>, component:<Dashboard/>},
+            {text:'Vital Tasks', icon: <AssignmentTurnedInIcon style={{color:'var(--icons-color)'}}/>,component:<p>vital tasks</p>},
+            {text:'settings', icon: <SettingsIcon style={{color:'var(--icons-color)'}}/>,component:<p>settings</p>},
         ]
         return (
             <ul className={styles.leftbar}>
@@ -19,7 +19,7 @@ export default function Hero() {
                     options.map((data, index) => (
                             <div key={index} onClick={()=>{setCurrentComponent(data.component)}}>
                                 <p>{data.icon}</p>
-                                <p className={'hidden md:flex pt-[5px] capitalize'}>{data.text}</p>
+                                <p className={'hidden sm:flex pt-[5px] capitalize'}>{data.text}</p>
                             </div>
                         )
                     )
