@@ -3,12 +3,13 @@ import styles from '../../styles.module.css'
 import DashboardIcon from '@mui/icons-material/Dashboard';
 import AssignmentTurnedInIcon from '@mui/icons-material/AssignmentTurnedIn';
 import SettingsIcon from '@mui/icons-material/Settings';
+import Dashboard from "./dashboard";
 
 export default function Hero() {
     const [currentComponent, setCurrentComponent] = useState<ReactNode>(<></>)
     function LeftBar(){
         const options = [
-            {text:'Dashboard', icon: <DashboardIcon/>, component:<p>dashboard</p>},
+            {text:'Dashboard', icon: <DashboardIcon/>, component:<Dashboard/>},
             {text:'Vital Tasks', icon: <AssignmentTurnedInIcon/>,component:<p>vital tasks</p>},
             {text:'settings', icon: <SettingsIcon/>,component:<p>settings</p>},
         ]
