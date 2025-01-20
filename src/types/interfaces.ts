@@ -5,8 +5,11 @@ const HIGH = 'high';
 enum Status {
     PENDING, COMPLETED, IN_PROGRESS
 }
-enum Priority{
-    URGENT,MEDIUM, LOW_PRIORITY
+export enum Priority{
+    URGENT = 'URGENT',
+    TRIVIAL = 'TRIVIAL',
+    LOW_PRIORITY = 'LOW_PRIORITY',
+    MEDIUM = 'MEDIUM'
 }
 export interface Task{
     date: Date,
