@@ -11,7 +11,5 @@ export default function Progress(props:{percent:number,text:string, color:string
                 <p className={'capitalize text-[11px] md:text-[15px] font-[650] text-nowrap mt-[5px]'}>{props.text}</p>
             </div>
         </div>
-
     )
-
 }

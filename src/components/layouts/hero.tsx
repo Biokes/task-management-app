@@ -29,7 +29,7 @@ export default function Hero() {
     }
     function RightBar(props: {component: ReactNode}){
         return (
-            <div>
+            <div className={'w-full'}>
                 {props.component}
             </div>
 
