@@ -6,7 +6,7 @@ import SettingsIcon from '@mui/icons-material/Settings';
 import Dashboard from "./dashboard";
 
 export default function Hero() {
-    const [currentComponent, setCurrentComponent] = useState<ReactNode>(<Dashboard/>)
+    const [currentComponent, setCurrentComponent] = useState<{component:ReactNode,text:string}>({component:<Dashboard/>,text:'Dashboard'})
     function LeftBar(){
         const options = [
             {text:'Dashboard', icon: <DashboardIcon style={{color:'var(--icons-color)'}}/>, component:<Dashboard/>},
@@ -17,10 +17,10 @@ export default function Hero() {
             <ul className={styles.leftbar}>
                 {
                     options.map((data, index) => (
-                            <div key={index} onClick={()=>{setCurrentComponent(data.component)}}
-                                 className={`${data.component !== currentComponent ? 'hover:bg-gray-200' : 'bg-blue-950'}`}>
-                                <p className={`${data.component !== currentComponent ? 'text-white' : 'text-blue-950'}`}>{data.icon}</p>
-                                <p className={'hidden sm:flex pt-[5px] capitalize'}>{data.text}</p>
+                            <div key={index} onClick={()=>{setCurrentComponent({component:data.component,text:data.text})}}
+                                 className={`${data.text !== currentComponent.text ? 'hover:bg-gray-200' : 'bg-gray-400'}`}>
+                                <p className={`${data.text === currentComponent.text ? 'text-white' : 'text-blue-950'}`}>{data.icon}</p>
+                                <p className={`hidden sm:flex pt-[5px] capitalize `}>{data.text}</p>
                             </div>
                         )
                     )
@@ -38,7 +38,7 @@ export default function Hero() {
     return (
         <div className={'flex h-[100%]'}>
             <LeftBar/>
-            <RightBar component={currentComponent}/>
+            <RightBar component={currentComponent.component}/>
         </div>
     )
 }

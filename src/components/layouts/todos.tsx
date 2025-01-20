@@ -20,7 +20,7 @@ export default function Todos() {
                         <p className={'pt-[7px]'}>To-Do</p>
                         <p className={'text-nowrap pt-[7px] font-thin'}>today</p>
                     </div>
-                    <div onClick={openAndCloseModal}>
+                    <div onClick={openAndCloseModal} className={'hover:cursor-pointer hover:bg-gray-200 transform transition duration-[700] rounded-[50%] ease-in-out' }>
                         <AddIcon/>
                     </div>
                 </section>
