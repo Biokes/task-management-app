@@ -4,7 +4,8 @@ import DatePicker from "react-datepicker";
 import 'react-datepicker/dist/react-datepicker.css';
 import CloseIcon from '@mui/icons-material/Close';
 import CalendarTodayIcon from '@mui/icons-material/CalendarToday';
-import {Priority} from "../../types/interfaces";
+import {Priority, Status, Task} from "../../types/interfaces";
+import {AddTask} from "../../store/store";
 
 interface ModalProps{
     isOpen: boolean,
@@ -12,8 +13,17 @@ interface ModalProps{
 }
 export default function CreateTaskModal(props:ModalProps) {
     const addTask=()=>{
-
+        const task: Task = {
+            name:taskName,
+            description: taskDescription,
+            dateCreated: new Date(),
+            dueDate: dueDate,
+            priority:priority,
+            status:Status.PENDING
+        }
+        AddTask(task);
     }
+
     const [taskName,setTaskName] = useState<string>('')
     const [taskDescription , setTaskDescription] = useState<string>('')
     const [priority, setPriority] = useState<Priority>(Priority.LOW_PRIORITY);
@@ -22,22 +32,21 @@ export default function CreateTaskModal(props:ModalProps) {
     return (
         <>
             <div className="fixed inset-0 bg-customBlue_dark bg-opacity-80 z-40" onClick={props.onClose}></div>
-
             <Modal open={props.isOpen} onClose={props.onClose}>
                 <Box sx={{position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)',
-                    width: { xs: '90%', sm: '600px' }, backgroundColor: 'background.paper', boxShadow: 24,
-                    p: { xs: 2, sm: 4 }, borderRadius: 2, zIndex: 50, overflowY: 'auto', maxHeight: '70vh',}}>
+                    width: { xs: '90%', sm: '500px' }, backgroundColor: 'background.paper', boxShadow: 24,
+                    p: { xs: 2, sm: 4 }, borderRadius: 2, zIndex: 50, overflowY: 'auto', maxHeight: '80vh',}}>
                     <IconButton onClick={props.onClose} sx={{ position: 'absolute', top: 8, right: 8 }}>
                         <CloseIcon />
                     </IconButton>
-
                     <Typography variant="h6" component="h2" sx={{ mb: 2, color: '#475661', fontSize: { xs: '1.2rem', sm: '1.5rem' } }}>
                         Create a Task
                     </Typography>
-
                     <form onSubmit={(e) => {
                         e.preventDefault();
-                        addTask(); }}>
+                        addTask();
+                    }}
+                    >
                         <Box sx={{ mb: 2 }}>
                             <Typography variant="body2" sx={{ mb: 1, color: '#475661' }}>Task Name</Typography>
                             <TextField fullWidth placeholder="Ex. Task one" variant="outlined" size="small"
@@ -46,7 +55,6 @@ export default function CreateTaskModal(props:ModalProps) {
                                 setTaskName(e.target.value)
                             }} InputProps={{ style: { color: '#475661' } }}/>
                         </Box>
-
                         <Box sx={{ mb: 2 }}>
                             <Typography variant="body2" sx={{ mb: 1, color: '#475661' }}>Task Description</Typography>
                             <TextField
@@ -64,7 +72,6 @@ export default function CreateTaskModal(props:ModalProps) {
                                 InputProps={{ style: { color: '#475661' } }}
                             />
                         </Box>
-
                         <Box sx={{ mb: 2 }}>
                             <Typography variant="body2" sx={{ mb: 1, color: '#475661' }}>Task Priority</Typography>
                             <TextField
@@ -99,76 +106,24 @@ export default function CreateTaskModal(props:ModalProps) {
                                 ))}i
                             </TextField>
                         </Box>
-
                         <Box sx={{ mb: 2, display: 'flex', gap: 2, flexDirection: { xs: 'column', sm: 'row' } }}>
                             <div>
-                                <p className={'text-xs'}>Start Date</p>
+                                <p className={'text-xs'}>Due Date</p>
                                 <div className="relative flex">
                                     <DatePicker selected={dueDate} onChange={(date) => setDueDate(date as Date)} placeholderText="23 Dec 2021"
                                                 minDate={new Date()} dateFormat="dd-MM-yyyy"
-                                                className="w-full p-2 border rounded text-sm outline-none focus:ring-2 focus:ring-[#008eef]
+                                                className="w-4/5 p-[6px] border rounded text-sm outline-none focus:ring-2 focus:ring-[#008eef]
                                                 focus:border-[#008eef]"/>
                                     <span className="absolute flex justify-center pointer-events-none">
-                                        <CalendarTodayIcon className="h-[18px] w-[18px] ml-[160px] mt-[10px] text-[#475661]"/>
+                                        <CalendarTodayIcon className="h-[15px] w-[15px] ml-[110px] mt-[6px] text-[#475661]"/>
                                     </span>
                                 </div>
                             </div>
-
                         </Box>
-
-                        {/*<Box sx={{mb: 2}}>*/}
-                        {/*    <Typography variant="body2" sx={{mb: 1, color: '#475661'}}>Add a cohort avatar</Typography>*/}
-                        {/*    <Box*/}
-                        {/*        {...getRootProps()}*/}
-                        {/*        sx={{*/}
-                        {/*            border: '2px dashed lightblue',*/}
-                        {/*            borderRadius: '8px',*/}
-                        {/*            textAlign: 'center',*/}
-                        {/*            cursor: 'pointer',*/}
-                        {/*            mt: 1,*/}
-                        {/*            backgroundColor: '#eaf5fa',*/}
-                        {/*            height: '100px',*/}
-                        {/*            overflow: 'hidden'*/}
-                        {/*        }}*/}
-                        {/*    >*/}
-                        {/*        <input {...getInputProps()} />*/}
-                        {/*        {selectedFile ? (*/}
-                        {/*            <Box sx={{ position: 'relative', height: '100%', width: '100%' }}>*/}
-                        {/*                <Image*/}
-                        {/*                    src={selectedFile}*/}
-                        {/*                    alt="Selected file preview"*/}
-                        {/*                    layout="fill"*/}
-                        {/*                    objectFit="cover"*/}
-                        {/*                    style={{ borderRadius: '8px' }}*/}
-                        {/*                />*/}
-                        {/*            </Box>*/}
-                        {/*        ) : (*/}
-                        {/*            <>*/}
-                        {/*                {isDragActive ? (*/}
-                        {/*                    <Typography variant="body2" sx={{ color: '#475661' }}>Drop the files here ...</Typography>*/}
-                        {/*                ) : (*/}
-                        {/*                    <>*/}
-                        {/*                        <FileUploadOutlinedIcon sx={{ fontSize: 40, color: '#475661' }} />*/}
-                        {/*                        <Typography variant="body2" sx={{ mt: 1, color: '#475661',fontWeight:'small' }}>*/}
-                        {/*                            Drag and drop files here, or click to select files*/}
-                        {/*                        </Typography>*/}
-                        {/*                    </>*/}
-                        {/*                )}*/}
-                        {/*            </>*/}
-                        {/*        )}*/}
-                        {/*    </Box>*/}
-                        {/*    <div className="flex items-center px-[3px]">*/}
-                        {/*        <ErrorOutlineOutlinedIcon sx={{ fontSize: 20, color: '#475661' }} />*/}
-                        {/*        {formError ?<p className="text-xs text-red-500">{formError}</p>:*/}
-                        {/*            <p className={'text-xs'}>You can add this later</p>}*/}
-                        {/*    </div>*/}
-                        {/*</Box>*/}
-
                         <DialogActions sx={{ mt: 2 }}>
                             <Button variant="outlined" onClick={props.onClose}>Cancel</Button>
-                            <Button variant="contained" type="submit"
-                                    disabled={!taskName || !taskDescription || !priority  || !dueDate}>
-                                Create Cohort
+                            <Button variant="contained" type="submit" disabled={!taskName.trim() || !taskDescription.trim() || !priority  || !dueDate}>
+                                Create Task
                             </Button>
                         </DialogActions>
                     </form>

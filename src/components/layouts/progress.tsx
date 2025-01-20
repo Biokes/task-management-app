@@ -15,7 +15,6 @@ export default function Progress(props:{percent:number,text:string, color?:Color
                 <ColoredDot color={props.color as string} size={8}/>
                 <p className={'capitalize text-[10px]  font-[580] text-nowrap mt-[5px]'}>{props.text}</p>
             </div>
-
         </div>
     )
 }

@@ -6,7 +6,7 @@ import SettingsIcon from '@mui/icons-material/Settings';
 import Dashboard from "./dashboard";
 
 export default function Hero() {
-    const [currentComponent, setCurrentComponent] = useState<ReactNode>(<></>)
+    const [currentComponent, setCurrentComponent] = useState<ReactNode>(<Dashboard/>)
     function LeftBar(){
         const options = [
             {text:'Dashboard', icon: <DashboardIcon style={{color:'var(--icons-color)'}}/>, component:<Dashboard/>},
@@ -17,8 +17,9 @@ export default function Hero() {
             <ul className={styles.leftbar}>
                 {
                     options.map((data, index) => (
-                            <div key={index} onClick={()=>{setCurrentComponent(data.component)}}>
-                                <p>{data.icon}</p>
+                            <div key={index} onClick={()=>{setCurrentComponent(data.component)}}
+                                 className={`${data.component !== currentComponent ? 'hover:bg-gray-200' : 'bg-blue-950'}`}>
+                                <p className={`${data.component !== currentComponent ? 'text-white' : 'text-blue-950'}`}>{data.icon}</p>
                                 <p className={'hidden sm:flex pt-[5px] capitalize'}>{data.text}</p>
                             </div>
                         )
@@ -32,7 +33,6 @@ export default function Hero() {
             <div className={'w-full'}>
                 {props.component}
             </div>
-
         )
     }
     return (

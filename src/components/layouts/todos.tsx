@@ -1,7 +1,7 @@
 import React, {useState} from 'react'
 import AddIcon from "@mui/icons-material/Add";
 import PlaylistAddCheckIcon from '@mui/icons-material/PlaylistAddCheck';
-import FetchAllTasks from "../../store/store";
+import {FetchAllTasks} from "../../store/store";
 import NoTasks from '../commons/noTasks'
 import CreateTaskModal from "./createTaskModal";
 export default function Todos() {
@@ -37,7 +37,7 @@ export default function Todos() {
                <NoTasks/>
                }
            </div>
-            <CreateTaskModal onClose={openAndCloseModal} isOpen={isModalActive}/>
+            {isModalActive && <CreateTaskModal onClose={openAndCloseModal} isOpen={isModalActive}/>}
         </div>
     )
 }

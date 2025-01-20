@@ -1,9 +1,7 @@
-const URGENT = 'urgent';
-const LOW = 'low';
-const HIGH = 'high';
-
-enum Status {
-    PENDING, COMPLETED, IN_PROGRESS
+export enum Status {
+    PENDING = 'pending',
+     IN_PROGRESS = 'in progress',
+     COMPLETED = 'completed',
 }
 export enum Priority{
     URGENT = 'URGENT',
@@ -12,9 +10,10 @@ export enum Priority{
     MEDIUM = 'MEDIUM'
 }
 export interface Task{
-    date: Date,
-    taskText:string,
+    dueDate: Date,
+    name:string,
     description: string,
     status:Status,
-    priority:Priority
+    priority:Priority,
+    dateCreated: Date
 }
