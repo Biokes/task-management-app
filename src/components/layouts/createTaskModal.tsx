@@ -12,22 +12,25 @@ interface ModalProps{
     onClose: () => void
 }
 export default function CreateTaskModal(props:ModalProps) {
+    const [taskName,setTaskName] = useState<string>('')
+
+    const [taskDescription , setTaskDescription] = useState<string>('')
+    const [priority, setPriority] = useState<Priority| string>('LOW_PRIORITY');
+    const [dueDate, setDueDate] = useState<Date>(new Date());
     const addTask=()=>{
         const task: Task = {
             name:taskName,
             description: taskDescription,
             dateCreated: new Date(),
             dueDate: dueDate,
-            priority:priority,
+            priority:priority as Priority,
             status:Status.PENDING
         }
         AddTask(task);
+        setTaskDescription('');
+        setTaskName('')
+        props.onClose();
     }
-
-    const [taskName,setTaskName] = useState<string>('')
-    const [taskDescription , setTaskDescription] = useState<string>('')
-    const [priority, setPriority] = useState<Priority>(Priority.LOW_PRIORITY);
-    const [dueDate, setDueDate] = useState<Date>(new Date());
 
     return (
         <>
@@ -78,13 +81,10 @@ export default function CreateTaskModal(props:ModalProps) {
                                 select
                                 fullWidth
                                 value={priority}
-                                // onChange={(e) => setPriority(e.target.value as Priority)}
                                 onChange={(e) => {
                                     const value = e.target.value;
                                     if (Object.values(Priority).includes(value as Priority)) {
                                         setPriority(value as Priority);
-                                    } else {
-                                        setPriority(Priority.LOW_PRIORITY)
                                     }
                                 }}
                                 variant="outlined"
@@ -122,7 +122,7 @@ export default function CreateTaskModal(props:ModalProps) {
                         </Box>
                         <DialogActions sx={{ mt: 2 }}>
                             <Button variant="outlined" onClick={props.onClose}>Cancel</Button>
-                            <Button variant="contained" type="submit" disabled={!taskName.trim() || !taskDescription.trim() || !priority  || !dueDate}>
+                            <Button variant="contained" type="submit" disabled={!taskName.trim() || !taskDescription.trim() || !priority || !dueDate}>
                                 Create Task
                             </Button>
                         </DialogActions>

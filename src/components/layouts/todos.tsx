@@ -4,8 +4,9 @@ import PlaylistAddCheckIcon from '@mui/icons-material/PlaylistAddCheck';
 import {FetchAllTasks} from "../../store/store";
 import NoTasks from '../commons/noTasks'
 import CreateTaskModal from "./createTaskModal";
+import {Task} from '../../types/interfaces';
 export default function Todos() {
-    const allTasks =  FetchAllTasks()
+    const allTasks:Task[] =  FetchAllTasks()
     const today = new Date();
     const [isModalActive, setModalActive] = useState<boolean>(false)
     const openAndCloseModal =()=>{
@@ -30,14 +31,25 @@ export default function Todos() {
             </nav>
            <div>
                {allTasks.length>= 1?
-                   <p>
-                       tasks is available
-                   </p>
+                  allTasks.map((task, index)=>(
+                      <div key={index} className={'flex flex-col rounded-md border-[1px] border-blue-950 p-[10px]'}>
+                          <section className={'flex flex-col'}>
+                              <p>{task.name}</p>
+                              <p>{task.description}</p>
+                          </section>
+                          <section className={'flex justify-around items-center'}>
+                              <p>{task.dueDate.toLocaleString().split('T')[0]}</p>
+                              <p>{task.status}</p>
+                              <p>{task.priority}</p>
+                          </section>
+                      </div>
+                  ))
                :
                <NoTasks/>
                }
            </div>
-            {isModalActive && <CreateTaskModal onClose={openAndCloseModal} isOpen={isModalActive}/>}
+            {isModalActive &&
+                <CreateTaskModal onClose={openAndCloseModal} isOpen={isModalActive}/>}
         </div>
     )
 }

@@ -6,9 +6,8 @@ export function FetchAllTasks(){
 }
 
 export function AddTask(task:Task){
-    const tasks = FetchAllTasks()
-    tasks.push(task)
-    const taskToSave = JSON.stringify(tasks)
-    localStorage.setItem('tasks',taskToSave)
+    const tasks = FetchAllTasks();
+    const updatedTasks = [...tasks, task];
+    localStorage.setItem('tasks', JSON.stringify(updatedTasks));
 }
 
