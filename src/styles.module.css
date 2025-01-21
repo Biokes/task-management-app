@@ -37,10 +37,13 @@ h2, p{
     @apply flex flex-col  h-[100vh] overflow-hidden
 }
 .allTasks{
-    @apply flex flex-col gap-[10px] overflow-y-auto
+    @apply flex flex-col gap-[10px]
 }
 .task{
     @apply flex flex-col rounded-md border-[1px] border-blue-950 p-[10px] bg-gray-200
+}
+.task p{
+    @apply truncate
 }
 .task :nth-child(1){
     font-family: Consolas, New, monospace;
@@ -49,5 +52,5 @@ h2, p{
     @apply flex justify-between items-center
 }
 .taskFooter p{
-    @apply uppercase text-center
+    @apply uppercase text-center truncate
 }

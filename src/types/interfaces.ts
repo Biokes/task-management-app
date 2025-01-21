@@ -17,3 +17,8 @@ export interface Task{
     priority:Priority,
     dateCreated: Date
 }
+export interface Notification{
+    description:string,
+    isViewed:boolean,
+    timeCreated:Date
+}

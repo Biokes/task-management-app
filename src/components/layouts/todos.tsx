@@ -2,7 +2,7 @@ import React, {useState} from 'react'
 import AddIcon from "@mui/icons-material/Add";
 import PlaylistAddCheckIcon from '@mui/icons-material/PlaylistAddCheck';
 import {FetchAllTasks} from "../../store/store";
-import NoTasks from '../commons/noTasks'
+import EmptyComponent from '../commons/emptyComponent'
 import CreateTaskModal from "./createTaskModal";
 import {Status, Task} from '../../types/interfaces';
 import styles from '../../styles.module.css'
@@ -36,8 +36,8 @@ export default function Todos() {
                   allTasks.map((task, index)=>(
                       <div key={index} className={styles.task}>
                           <section className={'flex flex-col'}>
-                              <p className={'capitalize text-[15px] font-[500] truncate'}>{task.name}</p>
-                              <p>{task.description}</p>
+                              <p className={'capitalize text-[15px] font-[500]'}>{task.name}</p>
+                              <p className={'truncate w-[80%]'}>{task.description}</p>
                           </section>
                           <section className={styles.taskFooter}>
                               <p>{task.dueDate.toLocaleString().split('T')[0]}</p>
@@ -47,7 +47,7 @@ export default function Todos() {
                       </div>
                   ))
                :
-               <NoTasks/>
+               <EmptyComponent text={'No Record Created Yet'}/>
                }
            </div>
             {isModalActive &&
