@@ -28,12 +28,12 @@ export default function Summary() {
     }, []);
 
     return (
-        <div className={'w-[95%] md:w-[350px] p-[12px] shadow rounded-md bg-white border-[0.5px]'}>
+        <div className={'w-[85%] md:w-[400px] p-[12px] shadow rounded-md bg-white border-[0.5px] md:h-[170px]'}>
             <div className={'flex gap-[10px] items-center'}>
                 <AssignmentIcon style={{color:'var(--icons-color)'}}/>
                 <p className={'pt-[5px]'}>Tasks status</p>
             </div>
-            <div className={'flex justify-between  w-full px-[10px] py-[10px]'}>
+            <div className={'flex justify-between  w-full py-[20px]'}>
                 <Progress percent={getCompleteTasksPercentage()} text={'completed'} color={'green'}/>
                 <Progress percent={getOnGoingTaskProgress()} text={'ongoing'} color={'blue'}/>
                 <Progress percent={getPendingTasksProgress()} text={'pending'} color={'orange'}/>

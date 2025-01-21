@@ -37,7 +37,7 @@ h2, p{
     @apply flex flex-col  h-[100vh] overflow-hidden
 }
 .allTasks{
-    @apply flex flex-col gap-[10px]
+    @apply flex flex-col gap-[10px] overflow-y-auto h-[50vh] md:h-[90%]
 }
 .task{
     @apply flex flex-col rounded-md border-[1px] border-blue-950 p-[10px] bg-gray-200
@@ -61,8 +61,8 @@ h2, p{
     @apply md:order-2 md:col-span-1 md:row-span-1
 }
 .dashboard :nth-child(2){
-    @apply md:order-2 md:col-span-1 md:row-span-2
+    @apply md:order-1 md:col-span-1 md:row-span-2
 }
 .dashboard :nth-child(3){
-    @apply md:order-3 md:col-span-1 md:col-row-1
+    @apply md:order-3 md:col-span-1 md:row-span-1
 }
