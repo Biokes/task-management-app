@@ -45,8 +45,9 @@ h2, p{
 .task p{
     @apply truncate
 }
-.task :nth-child(1){
-    font-family: Consolas, New, monospace;
+.taskName{
+    font-family: Consolas, New, monospace  capitalize;
+    @apply text-[15px] font-[500];
 }
 .taskFooter{
     @apply flex justify-between items-center
