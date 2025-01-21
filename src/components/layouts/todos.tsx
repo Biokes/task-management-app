@@ -7,7 +7,7 @@ import CreateTaskModal from "./createTaskModal";
 import {Status, Task} from '../../types/interfaces';
 import styles from '../../styles.module.css'
 
-export default function Todos() {
+export default function     Todos() {
     const allTasks:Task[] =  FetchAllTasks()
     const today = new Date();
     const [isModalActive, setModalActive] = useState<boolean>(false)
