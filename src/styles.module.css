@@ -2,32 +2,29 @@
     @apply transition-colors duration-300
 }
 h2, p{
-    @apply dark:text-amber-100 text-gray-950 text-[13px] font-[600];
+    @apply  text-[var(--text-color)] text-[13px] font-[600] ;
     font-family: 'Dm sans', sans-serif;
-}
-
-
-.dark{
-    @apply bg-blue-950 text-white
+    color: var(--text-color);
 }
 .modeSelector{
-    @apply w-[45px] h-[45px] rounded-md hover:filter-none focus:filter-none hover:cursor-pointer;
-    filter: grayscale(100%);
+    @apply w-[45px] h-[45px] rounded-md hover:bg-[var(--text-color)] hover:cursor-pointer;
+    /*filter: grayscale(100%);*/
     background-size: 30px 30px;
     transition: background-color 0.3s ease-in-out, filter 0.3s ease-in-out;
+    color:var(--text-color)
 }
 #modeSelector.clicked{
     filter: none !important;
     @apply bg-black
 }
 .iconColor{
-    color: var(--icons-color);
+    color: var(--text-color);
 }
 .navbar{
-    @apply flex justify-between items-center px-[10%]  drop-shadow-md dark:bg-gray-600 bg-amber-100
+    @apply flex justify-between items-center px-[10%]  drop-shadow-md bg-[--background-color]
 }
 .leftbar{
-    @apply flex flex-col px-[7px] md:px-[20px] gap-[7px] bg-white dark:bg-blue-500 w-[70px] sm:w-[200px] py-[10px] shadow-md h-full
+    @apply flex flex-col px-[7px] md:px-[20px] gap-[7px] bg-[--background-color] w-[70px] sm:w-[200px] py-[10px] shadow-md h-full
 }
 .leftbar div{
     @apply flex w-[90%] p-[7px] md:p-[10px_7px] rounded-md cursor-pointer gap-[10px] hover:translate-x-[5px] transition ease-in-out duration-[500] items-center hover:cursor-pointer
@@ -38,4 +35,19 @@ h2, p{
 }
 .home{
     @apply flex flex-col  h-[100vh] overflow-hidden
+}
+.allTasks{
+    @apply flex flex-col gap-[10px] overflow-y-auto
+}
+.task{
+    @apply flex flex-col rounded-md border-[1px] border-blue-950 p-[10px] bg-gray-200
+}
+.task :nth-child(1){
+    font-family: Consolas, New, monospace;
+}
+.taskFooter{
+    @apply flex justify-between items-center
+}
+.taskFooter p{
+    @apply uppercase text-center
 }

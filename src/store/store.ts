@@ -1,6 +1,6 @@
 import {Task} from "../types/interfaces";
 
-export function FetchAllTasks(){
+export function FetchAllTasks() :Task[]{
     const tasks = localStorage.getItem('tasks');
     return JSON.parse(tasks as string) ?? [];
 }

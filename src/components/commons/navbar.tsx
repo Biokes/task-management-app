@@ -1,36 +1,20 @@
 import styles from '../../styles.module.css'
-import React from "react";
+import React, {useEffect, useState} from "react";
 import LightModeIcon from '@mui/icons-material/LightMode';
 export default function Navbar(){
+    const [theme, setTheme] = useState<string>(localStorage.getItem('to_do_theme')??'light')
     const ModeSelector=()=>{
-        let clickedClass=  'clicked'
-        const body = document.body
-        const lightTheme = 'light'
-        const darkTheme ='dark'
-        let theme ='';
-        if(localStorage){
-            theme = localStorage.getItem('to_do_theme')?? lightTheme;
-        }
-        if(theme=== lightTheme) {
-            body.classList.add(lightTheme)
-        }else{
-            body.classList.add(darkTheme)
-        }
+        useEffect(()=>{
+            document.documentElement.style.setProperty('--text-color', theme==='dark'?'#ffffff':'#010428')
+            document.documentElement.style.setProperty('--background-color', theme==='dark'?'#010428':'#ffffff')
+        },[theme])
         const switchTheme = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>)=>{
-            const target = e.target as HTMLButtonElement
-            if(theme===darkTheme){
-                localStorage.setItem('to_do_theme',lightTheme);
-                theme = lightTheme;
-            }else{
-                body.classList.replace(lightTheme,darkTheme);
-                target.classList.add(clickedClass);
-                localStorage.setItem('to_do_theme',darkTheme);
-                theme = darkTheme;
-            }
+           localStorage.setItem('to_do_theme',theme === 'light'? 'dark':'light')
+            setTheme(localStorage.getItem('to_do_theme')?? '');
         }
         return (
-            <button id={'modeSelector'}
-                    className={`${theme === 'dark' ? clickedClass : ''} ${styles.modeSelector}`}
+            <button
+                    className={styles.modeSelector}
                     onClick={(e)=>switchTheme(e)}
             >
                 <LightModeIcon className={styles.iconColor}/>

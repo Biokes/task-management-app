@@ -4,7 +4,9 @@ import PlaylistAddCheckIcon from '@mui/icons-material/PlaylistAddCheck';
 import {FetchAllTasks} from "../../store/store";
 import NoTasks from '../commons/noTasks'
 import CreateTaskModal from "./createTaskModal";
-import {Task} from '../../types/interfaces';
+import {Status, Task} from '../../types/interfaces';
+import styles from '../../styles.module.css'
+
 export default function Todos() {
     const allTasks:Task[] =  FetchAllTasks()
     const today = new Date();
@@ -29,17 +31,17 @@ export default function Todos() {
                     {`${today.getDate()} ${today.toLocaleString('default', { month: 'long' })}`}
                 </p>
             </nav>
-           <div>
+           <div className={styles.allTasks}>
                {allTasks.length>= 1?
                   allTasks.map((task, index)=>(
-                      <div key={index} className={'flex flex-col rounded-md border-[1px] border-blue-950 p-[10px]'}>
+                      <div key={index} className={styles.task}>
                           <section className={'flex flex-col'}>
-                              <p>{task.name}</p>
+                              <p className={'capitalize text-[15px] font-[500] truncate'}>{task.name}</p>
                               <p>{task.description}</p>
                           </section>
-                          <section className={'flex justify-around items-center'}>
+                          <section className={styles.taskFooter}>
                               <p>{task.dueDate.toLocaleString().split('T')[0]}</p>
-                              <p>{task.status}</p>
+                              <p className={`pt-[5px] ${task.status===Status.COMPLETED? 'text-green-700':task.status===Status.IN_PROGRESS?'text-amber-700':'text-blue-950'}`}>{task.status}</p>
                               <p>{task.priority}</p>
                           </section>
                       </div>

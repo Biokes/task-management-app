@@ -4,7 +4,7 @@ import Todos from "./todos";
 
 export default function Dashboard() {
     return (
-        <div>
+        <div className={'bg-[var(--background-color)]'}>
             <Summary/>
             <Todos/>
         </div>

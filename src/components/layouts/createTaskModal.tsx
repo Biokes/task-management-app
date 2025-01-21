@@ -77,8 +77,7 @@ export default function CreateTaskModal(props:ModalProps) {
                         </Box>
                         <Box sx={{ mb: 2 }}>
                             <Typography variant="body2" sx={{ mb: 1, color: '#475661' }}>Task Priority</Typography>
-                            <TextField
-                                select
+                            <TextField select
                                 fullWidth
                                 value={priority}
                                 onChange={(e) => {
@@ -89,8 +88,7 @@ export default function CreateTaskModal(props:ModalProps) {
                                 }}
                                 variant="outlined"
                                 size="small"
-                                InputProps={{ style: { color: '#475661' } }}
-                            >
+                                InputProps={{ style: { color: '#475661' } }}>
                                 <MenuItem value="" disabled>
                                     Task Priority
                                 </MenuItem>
@@ -108,15 +106,15 @@ export default function CreateTaskModal(props:ModalProps) {
                         </Box>
                         <Box sx={{ mb: 2, display: 'flex', gap: 2, flexDirection: { xs: 'column', sm: 'row' } }}>
                             <div>
-                                <p className={'text-xs'}>Due Date</p>
+                                <Typography className={'text-xs'}>Due Date</Typography>
                                 <div className="relative flex">
                                     <DatePicker selected={dueDate} onChange={(date) => setDueDate(date as Date)} placeholderText="23 Dec 2021"
                                                 minDate={new Date()} dateFormat="dd-MM-yyyy"
                                                 className="w-4/5 p-[6px] border rounded text-sm outline-none focus:ring-2 focus:ring-[#008eef]
                                                 focus:border-[#008eef]"/>
-                                    <span className="absolute flex justify-center pointer-events-none">
+                                    <Typography className="absolute flex justify-center pointer-events-none">
                                         <CalendarTodayIcon className="h-[15px] w-[15px] ml-[110px] mt-[6px] text-[#475661]"/>
-                                    </span>
+                                    </Typography>
                                 </div>
                             </div>
                         </Box>
