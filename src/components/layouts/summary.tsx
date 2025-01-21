@@ -4,7 +4,7 @@ import Progress from "./progress";
 import AssignmentIcon from '@mui/icons-material/Assignment';
 import {Status, Task} from "../../types/interfaces";
 import {FetchAllTasks} from "../../store/store";
-
+import styles from '../../styles.module.css'
 export default function Summary() {
     const [tasks , setTasks] = useState<Task[]>([])
     const getCompleteTasksPercentage = () => {
@@ -28,7 +28,7 @@ export default function Summary() {
     }, []);
 
     return (
-        <div className={'w-[85%] md:w-[400px] p-[12px] shadow rounded-md bg-white border-[0.5px] md:h-[170px]'}>
+        <div className={styles.summary}>
             <div className={'flex gap-[10px] items-center'}>
                 <AssignmentIcon style={{color:'var(--icons-color)'}}/>
                 <p className={'pt-[5px]'}>Tasks status</p>

@@ -15,7 +15,7 @@ export default function Todos() {
         setModalActive(!isModalActive)
     }
     return (
-        <div className={'w-[85%] sm:w-[400px] mt-[10px] overflow-y-auto md:mt-0 p-[10px] md:h-[90%] shadow-md rounded-md border-[0.5px]'}>
+        <div className={styles.todos}>
             <nav>
                 <section className={'flex justify-between items-center'}>
                     <div className={'flex gap-[10px] items-center'}>

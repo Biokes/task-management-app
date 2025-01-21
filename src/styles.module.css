@@ -55,14 +55,14 @@ h2, p{
     @apply uppercase text-center truncate
 }
 .dashboard{
-    @apply bg-[var(--background-color)] flex flex-col gap-[10px] h-full overflow-y-auto pt-[20px] md:grid md:grid-rows-2 md:grid-cols-2
+    @apply bg-[var(--background-color)] flex flex-col gap-[10px] h-full overflow-y-auto pt-[20px] md:pt-[10px] md:grid md:grid-rows-2 md:grid-cols-2
 }
-.dashboard :nth-child(1){
-    @apply md:order-2 md:col-span-1 md:row-span-1
+.summary{
+    @apply w-[85%] md:w-[400px] p-[12px] shadow rounded-md bg-white border-[0.5px] md:h-[170px] md:order-2 md:col-span-1 md:row-span-1
 }
-.dashboard :nth-child(2){
-    @apply md:order-1 md:col-span-1 md:row-span-2
+.todos{
+    @apply md:order-1 md:col-span-1 md:row-span-2 w-[85%] sm:w-[400px] mt-[10px] overflow-y-auto md:mt-0 p-[10px] md:h-[95%] shadow-md rounded-md border-[0.5px]
 }
-.dashboard :nth-child(3){
-    @apply md:order-3 md:col-span-1 md:row-span-1
+.completeTasks{
+    @apply hidden md:flex md:order-3 md:col-span-1 md:row-span-1
 }
