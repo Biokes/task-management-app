@@ -54,3 +54,15 @@ h2, p{
 .taskFooter p{
     @apply uppercase text-center truncate
 }
+.dashboard{
+    @apply bg-[var(--background-color)] flex flex-col gap-[10px] h-full overflow-y-auto pt-[20px] md:grid md:grid-rows-2 md:grid-cols-2
+}
+.dashboard :nth-child(1){
+    @apply md:order-2 md:col-span-1 md:row-span-1
+}
+.dashboard :nth-child(2){
+    @apply md:order-2 md:col-span-1 md:row-span-2
+}
+.dashboard :nth-child(3){
+    @apply md:order-3 md:col-span-1 md:col-row-1
+}

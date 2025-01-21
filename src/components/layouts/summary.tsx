@@ -28,7 +28,7 @@ export default function Summary() {
     }, []);
 
     return (
-        <div className={'w-[95%] md:w-[350px] p-[30px_10px_20px_10px] shadow-md rounded-md bg-white'}>
+        <div className={'w-[95%] md:w-[350px] p-[12px] shadow rounded-md bg-white border-[0.5px]'}>
             <div className={'flex gap-[10px] items-center'}>
                 <AssignmentIcon style={{color:'var(--icons-color)'}}/>
                 <p className={'pt-[5px]'}>Tasks status</p>
