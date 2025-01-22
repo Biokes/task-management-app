@@ -9,11 +9,10 @@ import styles from '../../styles.module.css'
 import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
 import { Reorder } from "framer-motion";
 
-export default function     Todos() {
-    const allTasks:Task[] =  FetchAllTasks()
+export default function Todos(data:{tasks: Task[]}) {
     const today = new Date();
     const [isModalActive, setModalActive] = useState<boolean>(false)
-    const [tasks, setTask] = useState<Task[]>(allTasks)
+    const [tasks, setTask] = useState<Task[]>(data.tasks)
     const [state, setState] = useState<string>('');
 
     const openAndCloseModal =()=>{
@@ -25,7 +24,7 @@ export default function     Todos() {
     },[state])
 
     return (
-        <div className={`${allTasks.length>=1 ? 'md:h-[95%] overflow-y-auto':'h-[200px]'} ${styles.todos}`}>
+        <div className={`${tasks.length>=1 ? 'md:h-[95%] overflow-y-auto':'h-[200px]'} ${styles.todos}`}>
             <nav>
                 <section className={'flex justify-between items-center'}>
                     <div className={'flex gap-[10px] items-center'}>

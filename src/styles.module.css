@@ -56,16 +56,16 @@ h2, p{
     @apply uppercase text-center truncate
 }
 .dashboard{
-    @apply bg-[var(--background-color)] flex flex-col gap-[10px] h-full overflow-y-auto pt-[20px] md:pt-[10px] md:grid md:grid-rows-2 md:grid-cols-2
+    @apply bg-[var(--background-color)] flex flex-col gap-[10px] sm:gap-[30px] h-full overflow-y-auto pt-[20px] md:pt-[10px] md:grid md:grid-rows-2 md:grid-cols-2
 }
 .summary{
-    @apply w-full md:w-[400px] p-[12px] shadow rounded-md bg-white border-[0.5px] md:h-[170px] md:order-2 md:col-span-1 md:row-span-1
+    @apply w-full md:w-[1fr] shadow rounded-md bg-white border-[0.5px] md:mt-[3%] md:h-[80%] md:order-2 md:col-span-1 md:row-span-1
 }
 .todos{
-    @apply md:order-1 md:col-span-1 md:row-span-2 w-full sm:w-[30vw] mt-[10px] md:mt-0 p-[10px] shadow-md rounded-md border-[0.5px]
+    @apply md:order-1 md:col-span-1 md:row-span-2 w-full sm:w-[1fr] mt-[10px] md:mt-0 p-[10px] shadow-md rounded-md border-[0.5px]
 }
-.completeTasks{
-    @apply hidden md:flex md:order-3 md:col-span-1 md:row-span-1
+.completedTasks{
+    @apply hidden sm:w-[1fr] sm:flex sm:flex-col md:order-3 md:col-span-1 md:row-span-1 border-[0.5px] shadow rounded sm:h-[90%] sm:mt-[15px]  md:-mt-[10%]
 }
 .iconBg{
     @apply hover:cursor-pointer hover:bg-gray-300 transform transition duration-[700] rounded-[50%] ease-in-out

@@ -27,7 +27,7 @@ export default function Hero() {
     }
     function RightBar(props: {component: ReactNode}){
         return (
-            <div className={'w-full px-[5%] md:ml-0'}>
+            <div className={'w-full px-[5%] sm:px-[20px] md:ml-0'}>
                 {props.component}
             </div>
         )

@@ -1,6 +1,6 @@
-import {RouterProvider,} from "react-router-dom";
+import {RouterProvider} from "react-router-dom";
 import {ROUTES} from "./route/routes";
-import {useMemot} from "react";
+import {useMemo} from "react";
 import {Task} from "./types/interfaces";
 
 
