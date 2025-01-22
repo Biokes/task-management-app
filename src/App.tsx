@@ -1,6 +1,6 @@
 import {RouterProvider,} from "react-router-dom";
 import {ROUTES} from "./route/routes";
-import {useEffect} from "react";
+import {useMemot} from "react";
 import {Task} from "./types/interfaces";
 
 
@@ -14,11 +14,11 @@ export default function App() {
         console.log('tasks:',localStorage.getItem('tasks'));
         tasks = [];
     }
-    useEffect(()=>{
+    useMemo(()=>{
         document.documentElement.style.setProperty('--background', themeMode === "dark" ? '#000000' : '#ffffff');
         document.documentElement.style.setProperty('--small-text-color', themeMode === "dark" ? '#ffffff' : '#000000');
         localStorage.setItem('tasks',JSON.stringify(tasks))
-    },[themeMode])
+    },[themeMode, tasks])
 
 return <RouterProvider router={ROUTES}/>
 

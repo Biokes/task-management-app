@@ -7,16 +7,15 @@ import CreateTaskModal from "./createTaskModal";
 import {Status, Task} from '../../types/interfaces';
 import styles from '../../styles.module.css'
 import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
-import { useMotionValue, Reorder } from "framer-motion";
-import { useRaisedShadow } from "./use-raised-shadow";
+import { Reorder } from "framer-motion";
+
 export default function     Todos() {
     const allTasks:Task[] =  FetchAllTasks()
     const today = new Date();
     const [isModalActive, setModalActive] = useState<boolean>(false)
     const [tasks, setTask] = useState<Task[]>(allTasks)
     const [state, setState] = useState<string>('');
-    const y = useMotionValue(0);
-    const boxShadow = useRaisedShadow(y);
+
     const openAndCloseModal =()=>{
         setModalActive(!isModalActive)
         setState(state?'':'state');
@@ -42,12 +41,12 @@ export default function     Todos() {
                     {`${today.getDate()} ${today.toLocaleString('default', { month: 'long' })}`}
                 </p>
             </nav>
-           <div className={styles.allTasks}>
+           <div className={`${tasks.length >=1 ?'overflow-y-auto h-[50vh] md:max-h-[90%]' : ''} ${styles.allTasks}`}>
                {tasks.length>= 1?
                    <Reorder.Group axis="y" values={tasks} onReorder={setTask} className={'flex flex-col gap-[12px]'}>
                        {
                            tasks.map((task: Task, index) => (
-                           <Reorder.Item key={index} value={task} className={styles.task} style={{boxShadow,y}}>
+                           <Reorder.Item key={index} value={task} dragElastic={0.1} transition={{ duration: 0.25, ease: "easeInOut" }} dragTransition={{bounceStiffness: 600, bounceDamping: 20,}}>
                                <main className={styles.task}>
                                    <section className={'flex flex-col'}>
                                        <div className={'flex justify-between items-center'}>
@@ -61,7 +60,8 @@ export default function     Todos() {
                                    </section>
                                    <section className={styles.taskFooter}>
                                        <p>{task.dueDate.toLocaleString().split('T')[0]}</p>
-                                       <p className={`pt-[5px] ${task.status === Status.COMPLETED ? 'text-green-700' : task.status === Status.IN_PROGRESS ? 'text-amber-700' : 'text-blue-950'}`}>{task.status}</p>
+                                       <p className={`pt-[5px] ${task.status === Status.COMPLETED ? 'text-green-700' 
+                                           : task.status === Status.IN_PROGRESS ? 'text-amber-700' : 'text-blue-950'}`}>{task.status}</p>
                                        <p>{task.priority}</p>
                                    </section>
                                </main>

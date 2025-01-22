@@ -1,10 +1,10 @@
-import React, {ReactNode, useState} from 'react'
+import React, {ReactNode} from 'react'
 import styles from '../../styles.module.css'
 import DashboardIcon from '@mui/icons-material/Dashboard';
 import Dashboard from "./dashboard";
 
 export default function Hero() {
-    const [currentComponent, setCurrentComponent] = useState<{component:ReactNode,text:string}>({component:<Dashboard/>,text:'Dashboard'})
+    const currentComponent = {component:<Dashboard/>,text:'Dashboard'}
     function LeftBar(){
         const options = [
             {text:'Dashboard', icon: <DashboardIcon style={{color:'var(--text-color)'}}/>, component:<Dashboard/>},
