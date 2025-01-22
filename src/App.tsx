@@ -14,13 +14,11 @@ export default function App() {
         console.log('tasks:',localStorage.getItem('tasks'));
         tasks = [];
     }
-
-    // const tasks = JSON.parse(localStorage.getItem('tasks'))??[];
     useEffect(()=>{
         document.documentElement.style.setProperty('--background', themeMode === "dark" ? '#000000' : '#ffffff');
         document.documentElement.style.setProperty('--small-text-color', themeMode === "dark" ? '#ffffff' : '#000000');
         localStorage.setItem('tasks',JSON.stringify(tasks))
-    },[themeMode,tasks])
+    },[themeMode])
 
 return <RouterProvider router={ROUTES}/>
 

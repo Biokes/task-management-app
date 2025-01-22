@@ -24,7 +24,7 @@ h2, p{
     @apply flex justify-between items-center px-[10%]  drop-shadow-md bg-[--background-color]
 }
 .leftbar{
-    @apply flex flex-col px-[7px] md:px-[20px] gap-[7px] bg-[--background-color] w-[70px] sm:w-[200px] py-[10px] shadow-md h-full
+    @apply hidden sm:flex flex-col px-[7px] md:px-[20px] gap-[7px] bg-[--background-color] w-[70px] sm:w-[200px] py-[10px] shadow-md h-full
 }
 .leftbar div{
     @apply flex w-[90%] p-[7px] md:p-[10px_7px] rounded-md cursor-pointer gap-[10px] hover:translate-x-[5px] transition ease-in-out duration-[500] items-center hover:cursor-pointer
@@ -37,17 +37,17 @@ h2, p{
     @apply flex flex-col  h-[100vh] overflow-hidden
 }
 .allTasks{
-    @apply flex flex-col gap-[10px] overflow-y-auto h-[50vh] md:h-[90%]
+    @apply flex flex-col gap-[10px] overflow-y-auto h-[50vh] md:max-h-[90%] w-full
 }
 .task{
-    @apply flex flex-col rounded-md border-[1px] border-blue-950 p-[10px] bg-gray-200
+    @apply flex flex-col border-blue-950 p-[10px] bg-gray-100 rounded-md border-[0.2px] shadow hover:cursor-pointer
 }
 .task p{
     @apply truncate
 }
 .taskName{
-    font-family: Consolas, New, monospace  capitalize;
-    @apply text-[15px] font-[500];
+    font-family: Consolas, New, monospace;
+    @apply text-[15px] font-[500] capitalize;
 }
 .taskFooter{
     @apply flex justify-between items-center
@@ -59,11 +59,14 @@ h2, p{
     @apply bg-[var(--background-color)] flex flex-col gap-[10px] h-full overflow-y-auto pt-[20px] md:pt-[10px] md:grid md:grid-rows-2 md:grid-cols-2
 }
 .summary{
-    @apply w-[85%] md:w-[400px] p-[12px] shadow rounded-md bg-white border-[0.5px] md:h-[170px] md:order-2 md:col-span-1 md:row-span-1
+    @apply w-full md:w-[400px] p-[12px] shadow rounded-md bg-white border-[0.5px] md:h-[170px] md:order-2 md:col-span-1 md:row-span-1
 }
 .todos{
-    @apply md:order-1 md:col-span-1 md:row-span-2 w-[85%] sm:w-[400px] mt-[10px] overflow-y-auto md:mt-0 p-[10px] md:h-[95%] shadow-md rounded-md border-[0.5px]
+    @apply md:order-1 md:col-span-1 md:row-span-2 w-full sm:w-[400px] mt-[10px] md:mt-0 p-[10px] shadow-md rounded-md border-[0.5px]
 }
 .completeTasks{
     @apply hidden md:flex md:order-3 md:col-span-1 md:row-span-1
+}
+.iconsBg{
+    @apply hover:cursor-pointer hover:bg-gray-200 transform transition duration-[700] rounded-[50%] ease-in-out
 }

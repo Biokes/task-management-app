@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, {useEffect, useState} from 'react'
 import AddIcon from "@mui/icons-material/Add";
 import PlaylistAddCheckIcon from '@mui/icons-material/PlaylistAddCheck';
 import {FetchAllTasks} from "../../store/store";
@@ -7,23 +7,26 @@ import CreateTaskModal from "./createTaskModal";
 import {Status, Task} from '../../types/interfaces';
 import styles from '../../styles.module.css'
 import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
-import { Reorder } from "framer-motion"
-
+import { useMotionValue, Reorder } from "framer-motion";
+import { useRaisedShadow } from "./use-raised-shadow";
 export default function     Todos() {
     const allTasks:Task[] =  FetchAllTasks()
     const today = new Date();
     const [isModalActive, setModalActive] = useState<boolean>(false)
     const [tasks, setTask] = useState<Task[]>(allTasks)
+    const [state, setState] = useState<string>('');
+    const y = useMotionValue(0);
+    const boxShadow = useRaisedShadow(y);
     const openAndCloseModal =()=>{
         setModalActive(!isModalActive)
+        setState(state?'':'state');
     }
-    const handleReorder = (newTasks: Task[]) => {
-        setTask(newTasks);
-        localStorage.setItem('tasks', JSON.stringify(newTasks));
-    };
+    useEffect(()=>{
+        setTask(FetchAllTasks())
+    },[state])
 
     return (
-        <div className={styles.todos}>
+        <div className={`${allTasks.length>=1 ? 'md:h-[95%] overflow-y-auto':'h-[200px]'} ${styles.todos}`}>
             <nav>
                 <section className={'flex justify-between items-center'}>
                     <div className={'flex gap-[10px] items-center'}>
@@ -31,7 +34,7 @@ export default function     Todos() {
                         <p className={'pt-[7px]'}>To-Do</p>
                         <p className={'text-nowrap pt-[7px] font-thin'}>today</p>
                     </div>
-                    <div onClick={openAndCloseModal} className={'hover:cursor-pointer hover:bg-gray-200 transform transition duration-[700] rounded-[50%] ease-in-out'}>
+                    <div onClick={openAndCloseModal} className={styles.iconBg}>
                         <AddIcon/>
                     </div>
                 </section>
@@ -41,17 +44,18 @@ export default function     Todos() {
             </nav>
            <div className={styles.allTasks}>
                {tasks.length>= 1?
-                   <Reorder.Group axis="y" values={allTasks} onReorder={handleReorder}>
+                   <Reorder.Group axis="y" values={tasks} onReorder={setTask} className={'flex flex-col gap-[12px]'}>
                        {
                            tasks.map((task: Task, index) => (
-                           <Reorder.Item key={index} value={task} className={styles.task} initial={{opacity: 0}}
-                                         animate={{opacity: 1}} exit={{opacity: 0}} transition={{duration: 0.3}}>
+                           <Reorder.Item key={index} value={task} className={styles.task} style={{boxShadow,y}}>
                                <main className={styles.task}>
                                    <section className={'flex flex-col'}>
-                                       <div className={'flex flex-col justify-between items-center'}>
+                                       <div className={'flex justify-between items-center'}>
                                            <p className={styles.taskName}>{task.name}</p>
-                                           <MoreHorizIcon
-                                               className={'hover:cursor-pointer hover:bg-gray-200 transform transition duration-[700] rounded-[50%] ease-in-out'}/>
+                                           <div className={styles.iconBg}>
+                                               <MoreHorizIcon/>
+                                           </div>
+
                                        </div>
                                        <p className={'truncate w-[80%]'}>{task.description}</p>
                                    </section>
@@ -66,7 +70,7 @@ export default function     Todos() {
                        }
                    </Reorder.Group>
                :
-               <EmptyComponent text={'No Record Created Yet'}/>
+               <EmptyComponent text={'No Task Created Yet'}/>
                }
            </div>
             {isModalActive &&

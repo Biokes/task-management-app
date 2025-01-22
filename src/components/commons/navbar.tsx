@@ -7,7 +7,7 @@ export default function Navbar(){
         useEffect(()=>{
             document.documentElement.style.setProperty('--text-color', theme==='dark'?'#ffffff':'#010428')
             document.documentElement.style.setProperty('--background-color', theme==='dark'?'#010428':'#ffffff')
-        },[theme])
+        },[])
         const switchTheme = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>)=>{
            localStorage.setItem('to_do_theme',theme === 'light'? 'dark':'light')
             setTheme(localStorage.getItem('to_do_theme')?? '');

@@ -1,7 +1,6 @@
 import React, {ReactNode, useState} from 'react'
 import styles from '../../styles.module.css'
 import DashboardIcon from '@mui/icons-material/Dashboard';
-import SettingsIcon from '@mui/icons-material/Settings';
 import Dashboard from "./dashboard";
 
 export default function Hero() {
@@ -9,7 +8,6 @@ export default function Hero() {
     function LeftBar(){
         const options = [
             {text:'Dashboard', icon: <DashboardIcon style={{color:'var(--text-color)'}}/>, component:<Dashboard/>},
-            // {text:'settings', icon: <SettingsIcon style={{color:'var(--icons-color)'}}/>,component:<p>settings</p>},
         ]
         return (
             <ul className={styles.leftbar}>
@@ -29,7 +27,7 @@ export default function Hero() {
     }
     function RightBar(props: {component: ReactNode}){
         return (
-            <div className={'w-full'}>
+            <div className={'w-full px-[5%] md:ml-0'}>
                 {props.component}
             </div>
         )
