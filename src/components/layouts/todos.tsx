@@ -24,7 +24,7 @@ export default function Todos(data:{tasks: Task[]}) {
     },[state])
 
     return (
-        <div className={`${tasks.length>=1 ? 'md:h-[95%] overflow-y-auto':'h-[200px]'} ${styles.todos}`}>
+        <div className={`${tasks.length>=1 ? 'md:h-[90%] overflow-y-auto':'h-[200px]'} ${styles.todos}`}>
             <nav>
                 <section className={'flex justify-between items-center'}>
                     <div className={'flex gap-[10px] items-center'}>
@@ -40,7 +40,7 @@ export default function Todos(data:{tasks: Task[]}) {
                     {`${today.getDate()} ${today.toLocaleString('default', { month: 'long' })}`}
                 </p>
             </nav>
-           <div className={`${tasks.length >=1 ?'overflow-y-auto h-[50vh] md:max-h-[90%]' : ''} ${styles.allTasks}`}>
+           <div className={`${tasks.length >=1 ?'overflow-y-auto h-[50vh] md:max-h-[90%] border-[1px_0_0_0]' : ''} ${styles.allTasks} `}>
                {tasks.length>= 1?
                    <Reorder.Group axis="y" values={tasks} onReorder={setTask} className={'flex flex-col gap-[12px]'}>
                        {

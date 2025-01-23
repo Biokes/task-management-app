@@ -33,10 +33,10 @@ h2, p{
     @apply  text-nowrap text-center text-[15px] font-[680]
 }
 .home{
-    @apply flex flex-col  h-[100vh]
+    @apply flex flex-col md:h-[100vh] md:overflow-hidden
 }
 .allTasks{
-    @apply flex flex-col gap-[10px]  w-full
+    @apply flex flex-col gap-[10px] w-full overflow-y-auto
 }
 .task{
     @apply flex flex-col border-blue-950 p-[10px] bg-gray-100 rounded-md border-[0.2px] shadow hover:cursor-grab
@@ -64,7 +64,7 @@ h2, p{
     @apply md:order-1 md:col-span-1 md:row-span-2 w-full sm:w-[1fr] mt-[10px] md:mt-0 p-[10px] shadow-md rounded-md border-[0.5px]
 }
 .completedTasks{
-    @apply  sm:w-[1fr]  md:order-3 md:col-span-1 md:row-span-1 border-[0.5px] shadow rounded sm:h-full sm:mt-[15px]  md:-mt-[10%]
+    @apply  sm:w-[1fr] flex flex-col md:order-3 md:col-span-1 md:row-span-1 border-[0.5px] shadow rounded sm:h-4/5 sm:mt-[15px]  md:-mt-[7%]
 }
 .iconBg{
     @apply hover:cursor-pointer hover:bg-gray-300 transform transition duration-[700] rounded-[50%] ease-in-out

@@ -2,7 +2,7 @@ import React from 'react'
 
 export default function EmptyComponent(props: {text:string}) {
     return (
-            <p className={'py-[30px] flex justify-center items-center w-full text-center capitalize border-[0.5px] shadow sm:h-[100%]'}>
+            <p className={'flex justify-center items-center  w-full h-full text-center capitalize border-[0.5px] shadow'}>
                 {props.text}
             </p>
     )
