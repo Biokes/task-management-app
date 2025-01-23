@@ -5,13 +5,13 @@ import {Status, Task} from "../../types/interfaces";
 import styles from '../../styles.module.css'
 export default function Summary(props:{tasks: Task[]}) {
     const getCompleteTasksPercentage = () => {
-        return props.tasks.filter((task) => task.status === Status.COMPLETED).length;
+        return (props.tasks.filter((task) => task.status === Status.COMPLETED).length/props.tasks.length)*100?? 0;
     };
     const getOnGoingTaskProgress = () => {
-        return props.tasks.filter((task) => task.status === Status.IN_PROGRESS).length;
+        return (props.tasks.filter((task) => task.status === Status.IN_PROGRESS).length/props.tasks.length)*100?? 0;
     };
     const getPendingTasksProgress = () => {
-        return props.tasks.filter((task) => task.status === Status.PENDING).length;
+        return (props.tasks.filter((task) => task.status === Status.PENDING).length/props.tasks.length)*100 ?? 0;
     };
 
     return (

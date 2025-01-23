@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react'
 import AddIcon from "@mui/icons-material/Add";
 import PlaylistAddCheckIcon from '@mui/icons-material/PlaylistAddCheck';
-import {FetchAllTasks} from "../../store/store";
+import {FetchAllTasks} from "../../utils/utils";
 import EmptyComponent from '../commons/emptyComponent'
 import CreateTaskModal from "./createTaskModal";
 import {Status, Task} from '../../types/interfaces';

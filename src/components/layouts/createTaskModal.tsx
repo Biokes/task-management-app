@@ -5,16 +5,17 @@ import 'react-datepicker/dist/react-datepicker.css';
 import CloseIcon from '@mui/icons-material/Close';
 import CalendarTodayIcon from '@mui/icons-material/CalendarToday';
 import {Priority, Status, Task} from "../../types/interfaces";
-import {AddTask} from "../../store/store";
+import {AddTask} from "../../utils/utils";
+import {useTasks} from "../../contexts/TaskContext";
 
 interface ModalProps{
     isOpen: boolean,
     onClose: () => void
 }
 export default function CreateTaskModal(props:ModalProps) {
-    const [taskName,setTaskName] = useState<string>('')
-
-    const [taskDescription , setTaskDescription] = useState<string>('')
+    const [taskName,setTaskName] = useState<string>('');
+    const { tasks, setTasks } = useTasks();
+    const [taskDescription , setTaskDescription] = useState<string>('');
     const [priority, setPriority] = useState<Priority| string>('LOW_PRIORITY');
     const [dueDate, setDueDate] = useState<Date>(new Date());
     const addTask=()=>{
@@ -29,6 +30,7 @@ export default function CreateTaskModal(props:ModalProps) {
         AddTask(task);
         setTaskDescription('');
         setTaskName('')
+        setTasks([...tasks, task])
         props.onClose();
     }
 
